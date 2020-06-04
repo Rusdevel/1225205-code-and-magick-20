@@ -54,20 +54,6 @@ window.renderStatistics = function (ctx, players, times) {
 
   }
 
-  /*
-  ctx.fillText('Вы', CLOUD_X + TEXT_WIDTH, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150 + GAP + FONT_GAP);
-  ctx.fillText('Катя', CLOUD_X + TEXT_WIDTH + (BAR_WIDTH + GAP) * 1, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150 + GAP + FONT_GAP);
-  ctx.fillText('Петя', CLOUD_X + TEXT_WIDTH + (BAR_WIDTH + GAP) * 2, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150 + GAP + FONT_GAP);
 
-
-  ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  ctx.fillRect(CLOUD_X + TEXT_WIDTH + (BAR_WIDTH + GAP) * 0, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT);
-
-  ctx.fillStyle = 'hsl(240,100%,50%)';
-  ctx.fillRect(CLOUD_X + TEXT_WIDTH + (BAR_WIDTH + GAP) * 1, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT);
-
-  ctx.fillStyle = 'hsl(240,50%,50%)';
-  ctx.fillRect(CLOUD_X + TEXT_WIDTH + (BAR_WIDTH + GAP) * 2, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT);
-*/
 };
 
