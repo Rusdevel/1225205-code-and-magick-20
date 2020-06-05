@@ -45,7 +45,12 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'hsl(240,100%,50%)';
+      var getRandomColor = function () {
+        ctx.fillStyle = 'hsl(240, ' + (Math.random() * (100 - 1) + 1) + '%, 50%';
+        return ctx.fillStyle;
+      };
+      getRandomColor();
+
     }
     ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
     ctx.fillStyle = '#000';
