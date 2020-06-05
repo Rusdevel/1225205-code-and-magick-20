@@ -10,8 +10,7 @@ var TEXT_WIDTH = 50;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = -CLOUD_HEIGHT + 150;
 var BAR_GAP = 50;
-
-
+var CLOUD_COLOR = 'rgba(0, 0, 0, 0.7)';
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
@@ -28,12 +27,13 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+
 window.renderStatistics = function (ctx, players, times) {
 
-  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, CLOUD_COLOR);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, 'white');
 
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = 'black';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + TEXT_WIDTH);
   ctx.fillText('Список результатов:', CLOUD_X + GAP, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP);
@@ -41,9 +41,9 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  for (var i = 0; i < players.length; i++) {
-    if (players[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+  var creatColumn = function (player, time) {
+    if (player === 'Вы') {
+      ctx.fillStyle = 'red';
     } else {
       var getRandomColor = function () {
         ctx.fillStyle = 'hsl(240, ' + (Math.random() * (100 - 1) + 1) + '%, 50%';
@@ -52,9 +52,13 @@ window.renderStatistics = function (ctx, players, times) {
       getRandomColor();
 
     }
-    ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT * times[i] / maxTime);
-    ctx.fillStyle = '#000';
-    ctx.fillText(players[i], CLOUD_X + GAP + TEXT_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150 + GAP + FONT_GAP);
+    ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150, BAR_WIDTH, BAR_HEIGHT * time / maxTime);
+    ctx.fillStyle = 'black';
+    ctx.fillText(player, CLOUD_X + GAP + TEXT_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + TEXT_WIDTH + GAP + FONT_GAP + GAP + 150 + GAP + FONT_GAP);
+  };
+
+  for (var i = 0; i < players.length; i++) {
+    creatColumn(players[i], times[i]);
 
 
   }
